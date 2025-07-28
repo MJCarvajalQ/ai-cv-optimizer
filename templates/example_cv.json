@@ -1,0 +1,117 @@
+{
+  "personal_info": {
+    "name": "Jane Smith",
+    "professional_title": "Junior Backend Developer",
+    "email": "jane.smith@email.com",
+    "phone": "+1-555-0123",
+    "location": "City, Country (Remote & Relocation Available)",
+    "linkedin": "https://www.linkedin.com/in/jane-smith",
+    "github": "https://github.com/janesmith"
+  },
+  "professional_summary": "Motivated Junior Backend Developer with X years of practice in Java/Spring Boot and proven background in business analysis, data analysis, and client success. Adept at designing RESTful APIs, modeling relational data, and translating business requirements into technical solutions. Currently building personal projects to demonstrate technical expertise. Committed to continuous learning and professional growth.",
+  "skills": [
+    "Java",
+    "Spring Boot",
+    "Spring MVC", 
+    "Spring Data JPA",
+    "REST API design",
+    "MySQL",
+    "H2 Database",
+    "Oracle SQL Developer",
+    "Git/GitHub",
+    "Postman",
+    "IntelliJ IDEA",
+    "Maven",
+    "Apache POI",
+    "SQL",
+    "Python (basic)",
+    "CRUD operations",
+    "MVC architecture",
+    "Validation & Exception Handling",
+    "Agile methodologies",
+    "Data Analysis"
+  ],
+  "experience": [
+    {
+      "title": "Current Role",
+      "company": "Company Name",
+      "duration": "Start Date - Present",
+      "achievements": [
+        "Key achievement or responsibility",
+        "Another important contribution",
+        "Quantified result or improvement",
+        "Technical skill demonstration"
+      ]
+    },
+    {
+      "title": "Previous Role",
+      "company": "Previous Company",
+      "duration": "Start Date - End Date",
+      "achievements": [
+        "Major accomplishment in this role",
+        "Technical or business impact",
+        "Skills developed or applied",
+        "Team collaboration or leadership example"
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "name": "Main Project Name",
+      "duration": "Project Timeline",
+      "description": "Brief description of the project, technologies used, and key features implemented. Focus on backend development, API design, and database integration.",
+      "technologies": ["Spring Boot", "JPA", "MySQL", "Maven"],
+      "github": "https://github.com/username/project-repo"
+    },
+    {
+      "name": "Secondary Project",
+      "duration": "Project Timeline", 
+      "description": "Another project demonstrating different skills or technologies. Highlight problem-solving approach and technical decisions.",
+      "technologies": ["Spring Boot", "H2", "JUnit", "Maven"],
+      "github": "https://github.com/username/other-project"
+    }
+  ],
+  "education": [
+    {
+      "degree": "Degree Name",
+      "school": "University Name",
+      "year": "Graduation Year",
+      "details": "Relevant coursework or academic achievements"
+    }
+  ],
+  "certifications_courses": [
+    {
+      "name": "Online Course or Certification",
+      "status": "In Progress/Completed",
+      "provider": "Course Provider"
+    },
+    {
+      "name": "Another Course",
+      "duration": "Course Duration",
+      "status": "In Progress",
+      "provider": "Platform Name"
+    }
+  ],
+  "languages": [
+    {
+      "language": "English",
+      "level": "Professional"
+    },
+    {
+      "language": "Native Language",
+      "level": "Native"
+    }
+  ],
+  "awards": [
+    {
+      "name": "Professional Award or Recognition",
+      "organization": "Organization Name",
+      "description": "Brief description of the achievement"
+    }
+  ],
+  "additional_info": {
+    "mentorship": "Professional development activities or mentorship",
+    "career_focus": "Career goals and professional focus",
+    "unique_value": "What makes you unique as a candidate"
+  }
+}

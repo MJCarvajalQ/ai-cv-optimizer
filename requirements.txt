@@ -1,0 +1,16 @@
+# Core Google APIs
+google-api-python-client>=2.177.0
+google-auth>=2.40.3
+google-auth-httplib2>=0.2.0
+google-auth-oauthlib>=1.2.2
+
+# OpenAI API
+openai>=1.97.0
+
+# Utility libraries
+python-dotenv>=1.1.0
+requests>=2.31.0
+
+# Optional: Enhanced CLI (uncomment if using)
+# rich>=13.7.0
+# click>=8.1.7

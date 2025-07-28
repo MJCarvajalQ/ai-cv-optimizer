@@ -1,0 +1,147 @@
+{
+  "personal_info": {
+    "name": "Maria Jose Carvajal",
+    "email": "majocarvajal1593@gmail.com",
+    "phone": "+48 515 126 723",
+    "location": "Poland (open to remote & relocation)",
+    "linkedin": "https://www.linkedin.com/in/maria-jose-carvajal-szanowska/",
+    "github": "https://github.com/MJCarvajalQ"
+  },
+  "professional_summary": "Motivated Junior Backend Developer with 1.5 years of self-directed Java/Spring practice, reinforced by a proven record in B2B sales, data analysis and client success across SaaS and international markets. Adept at designing RESTful APIs, modeling relational data and translating business requirements into technical solutions. Currently building SalesMetricsAPI to merge sales analytics with backend engineering. Guided by a self-taught software-developer mentor and committed to continuous learning.",
+  "skills": [
+    "Java",
+    "Spring Boot",
+    "Spring MVC",
+    "Spring Data JPA",
+    "REST API design",
+    "MySQL",
+    "H2 Database",
+    "Oracle SQL Developer",
+    "Git/GitHub",
+    "Postman",
+    "IntelliJ IDEA",
+    "Maven",
+    "Apache POI",
+    "Power BI",
+    "Tableau",
+    "SQL",
+    "Python (basic)",
+    "CRUD operations",
+    "MVC architecture",
+    "Validation & Exception Handling",
+    "Agile methodologies",
+    "Data Analysis",
+    "B2B Sales",
+    "CRM (HubSpot/Apollo)"
+  ],
+  "experience": [
+    {
+      "title": "Freelance Sales Specialist",
+      "company": "Self-Employed",
+      "duration": "Dec 2023 - Present",
+      "achievements": [
+        "Built multichannel prospecting systems (HubSpot/Apollo) and automated CRM pipelines",
+        "Designed data-driven messaging, boosting lead response rates for 3 clients",
+        "Leveraged SQL & BI dashboards to advise on revenue KPIs",
+        "Managed client relationships and delivered measurable business results"
+      ]
+    },
+    {
+      "title": "Sales Specialist",
+      "company": "Selmo (SaaS)",
+      "duration": "Jun - Oct 2024",
+      "achievements": [
+        "Drove digital campaigns that increased qualified inquiries by 15%",
+        "Collaborated with product & engineering to align outreach with feature releases",
+        "Analyzed campaign performance data to optimize conversion rates",
+        "Contributed to cross-functional team success in fast-paced startup environment"
+      ]
+    },
+    {
+      "title": "Client Solution Consultant",
+      "company": "NielsenIQ",
+      "duration": "Oct 2022 - Nov 2023",
+      "achievements": [
+        "Created Power BI dashboards and Oracle SQL scripts that cut operational costs 20%",
+        "Presented technical insights to senior stakeholders for data-driven decisions",
+        "Automated reporting processes improving efficiency and accuracy",
+        "Translated complex data analytics into actionable business recommendations"
+      ]
+    },
+    {
+      "title": "International Account Manager",
+      "company": "Adecco",
+      "duration": "Dec 2020 - Feb 2022",
+      "achievements": [
+        "Managed $6M portfolio (Uber, Huawei, Roche) achieving top close ratio",
+        "Received Summit Sales Award 2022 for highest international performance",
+        "Built and maintained strategic relationships with enterprise clients",
+        "Exceeded revenue targets consistently through consultative selling approach"
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "name": "SalesMetricsAPI",
+      "duration": "July 2025 - Present",
+      "description": "Spring Boot + JPA + MySQL service tracking prospecting actions and computing weekly/monthly KPIs. Implements Bean-validated DTOs, layered architecture, custom error handling, and CSV/Excel export via Apache POI.",
+      "technologies": ["Spring Boot", "Spring Data JPA", "MySQL", "Apache POI", "Maven"],
+      "github": "https://github.com/MJCarvajalQ/SalesMetricsAPI"
+    },
+    {
+      "name": "Spring Pet Clinic (clone)",
+      "duration": "December 2024 - July 2025",
+      "description": "Multi-module CRUD application for pets/owners/veterinarians management. Clean architecture with services, repositories, and controllers. H2 in-memory database integration with TDD exercises.",
+      "technologies": ["Spring Boot", "Spring MVC", "H2 Database", "JUnit", "Maven"],
+      "github": "https://github.com/MJCarvajalQ/SpringPetClinic"
+    }
+  ],
+  "education": [
+    {
+      "degree": "BBA in Business Administration",
+      "school": "Pontificia Universidad Católica del Ecuador",
+      "year": "2016",
+      "details": "Strong foundation in business strategy, data analysis, and project management"
+    }
+  ],
+  "certifications_courses": [
+    {
+      "name": "Spring Framework 5: Beginner to Guru",
+      "status": "In Progress",
+      "provider": "Online Course"
+    },
+    {
+      "name": "Java Masterclass 2025",
+      "duration": "130 hours",
+      "status": "In Progress",
+      "provider": "Online Course"
+    },
+    {
+      "name": "The Modern Python 3 Bootcamp",
+      "status": "In Progress",
+      "provider": "Online Course"
+    }
+  ],
+  "languages": [
+    {
+      "language": "Spanish",
+      "level": "Native"
+    },
+    {
+      "language": "English",
+      "level": "C1 Advanced"
+    }
+  ],
+  "awards": [
+    {
+      "name": "Summit Sales Award 2022",
+      "organization": "Adecco",
+      "description": "Highest international close ratio"
+    }
+  ],
+  "additional_info": {
+    "mentorship": "Guided weekly by a self-taught software-developer mentor (code reviews, best practices)",
+    "career_focus": "Junior Backend Developer - Java & Spring Boot | Business-oriented | B2B Sales Background",
+    "unique_value": "Unique combination of technical skills and business acumen, with proven ability to translate business requirements into technical solutions"
+  }
+}
