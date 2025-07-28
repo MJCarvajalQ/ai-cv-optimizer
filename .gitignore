@@ -13,7 +13,7 @@ service-account-*.json
 *token*
 
 # Personal CV data
-templates/base_cv.json
+templates/base_cv_english.json
 templates/base_cv_spanish.json
 output/generated_cvs/
 *.pdf
