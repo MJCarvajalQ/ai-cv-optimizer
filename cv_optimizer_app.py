@@ -169,7 +169,8 @@ class CVOptimizerApp:
             # Update the job tracking in the sheet with comprehensive info
             print(f"📝 Updating job tracking...")
             try:
-                notes = f"AI-optimized CV generated for {job_data['company']} - {job_data['title']}"
+                ai_status = "AI-optimized" if use_ai and self.ai_optimizer else "Base template"
+                notes = f"{ai_status} CV generated for {job_data['company']} - {job_data['title']}"
                 self.sheets_reader.update_job_status(
                     spreadsheet_id, 
                     job_row, 
@@ -235,7 +236,8 @@ class CVOptimizerApp:
                 
                 # Update job status
                 try:
-                    notes = f"AI-optimized CV generated for {job_data['company']} - {job_data['title']}"
+                    ai_status = "AI-optimized" if use_ai and self.ai_optimizer else "Base template"
+                    notes = f"{ai_status} CV generated for {job_data['company']} - {job_data['title']}"
                     self.sheets_reader.update_job_status(
                         spreadsheet_id, 
                         job_row, 
