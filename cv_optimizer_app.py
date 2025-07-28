@@ -69,6 +69,35 @@ class CVOptimizerApp:
             print(f"❌ Error reading jobs: {e}")
             sys.exit(1)
     
+    def parse_job_range(self, range_str: str) -> List[int]:
+        """Parse job range string into list of row numbers.
+        
+        Examples:
+        - "2-5" -> [2, 3, 4, 5]
+        - "2,4,6" -> [2, 4, 6]
+        - "2-5,8,10-12" -> [2, 3, 4, 5, 8, 10, 11, 12]
+        """
+        rows = []
+        
+        try:
+            for part in range_str.split(','):
+                part = part.strip()
+                if '-' in part:
+                    # Handle range like "2-5"
+                    start, end = map(int, part.split('-'))
+                    rows.extend(range(start, end + 1))
+                else:
+                    # Handle single number like "3"
+                    rows.append(int(part))
+            
+            # Remove duplicates and sort
+            return sorted(list(set(rows)))
+            
+        except ValueError as e:
+            print(f"❌ Invalid range format: {range_str}")
+            print("Examples: '2-5', '2,4,6', '2-5,8,10-12'")
+            sys.exit(1)
+    
     def setup_cv_folder(self) -> str:
         """Create or find the CV folder in Google Drive"""
         if not self.cv_folder_id:
@@ -153,6 +182,91 @@ class CVOptimizerApp:
             
         except Exception as e:
             print(f"❌ Error creating Google Document: {e}")
+    
+    def generate_cvs_for_job_range(self, spreadsheet_id: str, job_rows: List[int], use_ai: bool = True, language: str = None):
+        """Generate CVs for a range of job rows"""
+        print(f"🚀 Generating CVs for job rows: {job_rows}")
+        
+        # Set up CV folder first
+        folder_id = self.setup_cv_folder()
+        
+        # Load base CV if not already loaded
+        if not self.base_cv:
+            self.load_base_cv()
+        
+        successful_cvs = []
+        failed_cvs = []
+        
+        for i, job_row in enumerate(job_rows, 1):
+            print(f"\\n--- Processing Job Row {job_row} ({i}/{len(job_rows)}) ---")
+            
+            try:
+                # Get job data
+                job_data = self.sheets_reader.get_job_by_row(spreadsheet_id, job_row)
+                if not job_data:
+                    print(f"❌ No job found in row {job_row}")
+                    failed_cvs.append({
+                        'job': f"Row {job_row}",
+                        'error': 'Job not found'
+                    })
+                    continue
+                
+                print(f"📝 Found job: {job_data['company']} - {job_data['title']}")
+                
+                # Optimize CV with AI if requested
+                if use_ai and self.ai_optimizer:
+                    print("🤖 Optimizing CV with AI...")
+                    optimized_cv = self.ai_optimizer.optimize_cv_for_job(self.base_cv, job_data)
+                else:
+                    optimized_cv = self.base_cv
+                
+                # Generate Google Doc
+                cv_title = f"{optimized_cv['personal_info']['name']} - CV for {job_data['company']} ({job_data['title']})"
+                cv_json = json.dumps(optimized_cv, indent=2)
+                
+                doc_language = language or self.language
+                doc_url = self.cv_generator.create_google_doc(cv_json, cv_title, doc_language, folder_id)
+                
+                successful_cvs.append({
+                    'job': f"Row {job_row}: {job_data['company']} - {job_data['title']}",
+                    'url': doc_url
+                })
+                print(f"✅ Success: {doc_url}")
+                
+                # Update job status
+                try:
+                    notes = f"AI-optimized CV generated for {job_data['company']} - {job_data['title']}"
+                    self.sheets_reader.update_job_status(
+                        spreadsheet_id, 
+                        job_row, 
+                        doc_url,  # CV Generated URL
+                        "CV Generated",  # Status
+                        notes  # Notes
+                    )
+                except Exception as status_error:
+                    print(f"⚠️  Could not update status: {status_error}")
+                
+            except Exception as e:
+                failed_cvs.append({
+                    'job': f"Row {job_row}",
+                    'error': str(e)
+                })
+                print(f"❌ Failed: {e}")
+        
+        # Summary
+        print(f"\\n🎉 RANGE PROCESSING COMPLETE!")
+        print(f"✅ Successful: {len(successful_cvs)} CVs")
+        print(f"❌ Failed: {len(failed_cvs)} CVs")
+        
+        if successful_cvs:
+            print(f"\\n📄 Successfully created CVs:")
+            for cv in successful_cvs:
+                print(f"  • {cv['job']}: {cv['url']}")
+        
+        if failed_cvs:
+            print(f"\\n⚠️  Failed CVs:")
+            for cv in failed_cvs:
+                print(f"  • {cv['job']}: {cv['error']}")
     
     def generate_cvs_for_all_jobs(self, spreadsheet_id: str, use_ai: bool = True, language: str = None):
         """Generate CVs for all jobs in the spreadsheet"""
@@ -240,6 +354,7 @@ def main():
     parser.add_argument('spreadsheet_id', help='Google Sheets ID containing job data')
     parser.add_argument('--list', action='store_true', help='List all jobs in the spreadsheet')
     parser.add_argument('--job-row', type=int, help='Generate CV for specific job row number')
+    parser.add_argument('--job-range', help='Generate CVs for job row range (e.g., "2-15" or "5,7,9-12")')
     parser.add_argument('--all-jobs', action='store_true', help='Generate CVs for all jobs')
     parser.add_argument('--no-ai', action='store_true', help='Skip AI optimization (use base CV)')
     parser.add_argument('--cv-template', default='templates/base_cv_english.json', help='Path to base CV template')
@@ -263,10 +378,14 @@ def main():
         app.list_jobs(args.spreadsheet_id)
     elif args.job_row:
         app.generate_cv_for_job(args.spreadsheet_id, args.job_row, use_ai=not args.no_ai, language=args.language)
+    elif args.job_range:
+        job_rows = app.parse_job_range(args.job_range)
+        print(f"📋 Parsed job range: {job_rows}")
+        app.generate_cvs_for_job_range(args.spreadsheet_id, job_rows, use_ai=not args.no_ai, language=args.language)
     elif args.all_jobs:
         app.generate_cvs_for_all_jobs(args.spreadsheet_id, use_ai=not args.no_ai, language=args.language)
     else:
-        print("❌ Please specify an action: --list, --job-row, or --all-jobs")
+        print("❌ Please specify an action: --list, --job-row, --job-range, or --all-jobs")
         parser.print_help()
 
 if __name__ == '__main__':
